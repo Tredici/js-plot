@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test 3</title>
+    <style type="text/css">
+        #canvas {
+            border-style: dashed;
+            border-width: 2px;
+            border-color: black;
+        }
+    </style>
+    <script type="text/javascript" src="../CanvasPie.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Test 3</h1>
+    </header>
+    <main>
+        <canvas id="canvas" height="400" width="600">
+            
+        </canvas>
+    </main>
+    <script type="text/javascript">
+        const canvas = document.getElementById("canvas")
+        const ctx = canvas.getContext('2d')
+
+        const cp = new CanvasPie(canvas)
+        const center = cp.center
+        const context = cp.context
+        const r = 0.9*Math.min(canvas.width,canvas.height)/2
+
+        context.beginPath()
+        context.moveTo(center.x, center.y)
+        context.arc(center.x, center.y, r, 0, -Math.PI/4, true)
+        context.closePath()
+        context.fill()
+
+
+    </script>
+</body>
+</html>
