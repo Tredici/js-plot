@@ -362,5 +362,11 @@ class CanvasPlot {
         }
         this.ctx.stroke();
     }
+
+    // do exactly what the name suggests
+    scaleAndPlot() {
+        let p = this.scale(...arguments);
+        this.plot(p);
+    }
 }
 

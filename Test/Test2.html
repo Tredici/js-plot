@@ -64,8 +64,10 @@
         for (let f of fun) {
             let y = Array.from(x).map(f);
             let p = Vec2.Zip(x,y);
-            let pp = cp.scale(p);
-            cp.plot(pp);
+
+            //let pp = cp.scale(p);
+            //cp.plot(pp);
+            cp.scaleAndPlot(p);
         }
 
     </script>
