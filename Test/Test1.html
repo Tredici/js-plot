@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test 1</title>
+    <style type="text/css">
+        #canvas {
+            border-style: dashed;
+            border-width: 2px;
+            border-color: black;
+        }
+    </style>
+    <script type="text/javascript" src="../CanvasPlot.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Test 1</h1>
+    </header>
+    <main>
+        <canvas id="canvas" height="400" width="600">
+            
+        </canvas>
+    </main>
+    <script type="text/javascript">
+        const canvas = document.getElementById("canvas")
+        const ctx = canvas.getContext('2d')
+
+        ctx.lineWidth = 1.0
+        // https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineJoin
+        ctx.lineJoin = "round"
+        // https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineCap
+        ctx.lineCap = "round"
+
+        function linspace(a,b,d) {
+            let arr = []
+            if (!d) d = 1
+            for (let x = a; x <= b; x += d) {
+                arr.push(x)
+            }
+            return arr
+        }
+
+        // genera una sequenza di punti {x,y}
+        // dall'array x
+        function genFun(x, fun) {
+            return Array.from(x).map((value, index) => new Vec2(value, fun(value, index)))
+        }
+
+        function plot(points) {
+            ctx.beginPath();
+            ctx.moveTo(points[0].x, points[0].y);
+            for (p of points) {
+                ctx.lineTo(p.x, p.y);
+            }
+            ctx.stroke();
+        }
+
+        // stampa il grafico
+        let x = linspace(0,600);
+        let fun = (x) => 200*(1+Math.sin(x/50));
+        let points = genFun(x,fun);
+        plot(points);
+    </script>
+</body>
+</html>
