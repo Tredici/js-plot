@@ -355,7 +355,7 @@ class CanvasPlot {
             } else if (arguments[0].constructor.name === 'Vec2') {
                 seq = [arguments[0]];
             } else {
-                throw new Error(`Type error: Number required, ${s.constructor.name} found`)
+                throw new Error(`Type error: Array or Vec2 required, ${s.constructor.name} found`)
             }
         } else {
             return;
