@@ -291,6 +291,12 @@ class CanvasPlot {
         return this._canvas;
     }
 
+    // return the CanvasRenderingContext2D associated
+    // with the canvas
+    get context() {
+        return this.ctx;
+    }
+
     // get the Frame representing the canvas screen
     get canvasFrame() {
         return new Frame(
